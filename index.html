@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UIDAI Face Authentication</title>
+    <link rel="icon" href="data:image/jpeg;base64,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">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('https://www.thestatesman.com/wp-content/uploads/2018/07/AADHAAR-FINAL.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #outer-container {
+            width: 100%;
+            max-width: 1200px;
+            border: 5px solid rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+        
+        .auth-bar, .bottom-bar {
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            position: absolute;
+            left: 20px;
+            z-index: 10;
+            border-radius: 10px;
+        }
+        
+        .auth-bar {
+            top: 10px;
+        }
+        
+        .bottom-bar {
+            bottom: 10px;
+            font-size: 1em;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            max-width: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            flex-wrap: wrap;
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            color: #fff;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+            position: absolute;
+            top: 60px;
+        }
+        
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 320px;
+            max-height: 240px;
+            min-width: 320px;
+            min-height: 240px;
+        }
+        
+        #user-details,
+        #result {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2em; 
+        }
+        
+        video {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        #result {
+            display: none;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 1.5em; 
+            padding-bottom: 50px;
+        }
+        
+        pre {
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+            font-weight: bold;
+        }
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; 
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 100%; 
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer-container">
+        <div class="auth-bar">UIDAI Authentication</div>
+        
+        <div class="container">
+            <!-- User Details Form -->
+            <div class="column" id="user-details">
+                <h2>User Details</h2>
+                <form id="user-details-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="aadhaar">Aadhaar Number:</label>
+                    <input type="text" id="aadhaar" name="aadhaar" required>
+                    
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                    
+                    <button type="submit">Proceed Authentication</button>
+                </form>
+                <div id="user-info" style="display:none;">
+                    <p><strong>Name:</strong> <span id="display-name"></span></p>
+                    <p><strong>Aadhaar Number:</strong> <span id="display-aadhaar"></span></p>
+                    <p><strong>Date of Birth:</strong> <span id="display-dob"></span></p>
+                </div>
+            </div>
+            
+            <!-- Webcam Display Section -->
+            <div class="column" id="webcam-container" style="display:none;">
+                <video id="video" autoplay></video>
+                <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+            </div>
+            
+            <!-- Result Section -->
+            <div class="column" id="result">
+                <h2>Status</h2>
+                <pre id="response"></pre>
+            </div>
+        </div>
+        
+        <div class="bottom-bar">
+            <p>&copy; 2024 UIDAI-Unique Identification Authority of India. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('user-details-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const aadhaar = document.getElementById('aadhaar').value;
+            const dob = document.getElementById('dob').value;
+
+            // Display the user details
+            document.getElementById('display-name').textContent = name;
+            document.getElementById('display-aadhaar').textContent = aadhaar;
+            document.getElementById('display-dob').textContent = dob;
+            
+            // Hide the form and show user details
+            document.getElementById('user-details-form').style.display = 'none';
+            document.getElementById('user-info').style.display = 'block';
+
+            document.getElementById('webcam-container').style.display = 'flex';
+            document.getElementById('result').style.display = 'block'; 
+
+            startWebcam();
+        });
+
+        // Set up webcam
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+
+        async function startWebcam() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+            } catch (error) {
+                console.error("Error accessing webcam: ", error);
+            }
+        }
+
+        // Capture image from webcam
+        function captureImage() {
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const dataURL = canvas.toDataURL('image/jpeg');
+            uploadImageFromWebcam(dataURL);
+        }
+
+        setInterval(captureImage, 5000);
+
+        // Upload captured image from webcam
+        async function uploadImageFromWebcam(dataURL) {
+            const response = await fetch('/detect', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ image_data: dataURL })
+            });
+        
+            const result = await response.text(); 
+            document.getElementById('response').textContent = result;
+
+            if (result.includes("Real")) {
+                setTimeout(() => {
+                    window.location.href = '/success';
+                }, 3000);
+            }
+        }
+                
+    </script>
+</body>
+</html>
